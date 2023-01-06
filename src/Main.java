@@ -1,14 +1,26 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Main {
+    static Connection dane;
+    static Statement daneStatement;
+    static ResultSet haslaSet, loginSet;
+
     public static void main(String[] args)
     {
-        DBConnector.connect();
-        //zaloguj();
+        zaloguj();
     }
 
     public static void zaloguj()
     {
+        String url = "jdbc:mysql://localhost:3306/szpital";
+        String username = "danelogowania";
+        String password = "admin";
+
+
         int wybor=0;
         String login, haslo;
         Scanner scanner = new Scanner(System.in);
@@ -19,30 +31,58 @@ public class Main {
             System.out.println("Podano zla lilczbe, wpisz jeszcze raz");
             wybor = scanner.nextInt();
         }
-            switch (wybor) {
-                case 1:
-                    System.out.println("Podaj login: ");
-                    login = scanner.nextLine();
-                    System.out.println("Podaj haslo: ");
-                    haslo = scanner.nextLine();
-                    lekarz();
-                    break;
-                case 2:
-                    pielegniarka();
-                    System.out.println("Podaj login: ");
-                    login = scanner.nextLine();
-                    System.out.println("Podaj haslo: ");
-                    haslo = scanner.nextLine();
-                    break;
-                case 3:
-                    pracownik();
-                    System.out.println("Podaj login: ");
-                    login = scanner.nextLine();
-                    System.out.println("Podaj haslo: ");
-                    haslo = scanner.nextLine();
-                    break;
+        switch (wybor) {
+            case 1:
+                System.out.println("Podaj login: ");
+                login = scanner.nextLine();
+                System.out.println("Podaj haslo: ");
+                haslo = scanner.nextLine();
 
-            }
+                try {
+                    dane = DriverManager.getConnection(url,username,password);
+                    daneStatement = dane.createStatement();
+                    haslaSet = daneStatement.executeQuery("select haslo from pracownik_szpitala where id_pracownika = "+ login);
+
+                    String test = "";
+                    while(haslaSet.next())
+                    {
+                        test = haslaSet.getString(1);
+                        break;
+                    }
+                    
+                    if(haslo.equals(test))
+                    {
+                        lekarz();
+                    }
+                    else{
+                        System.out.println("dupa");
+                    }
+
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+                //if()
+                //lekarz();
+                break;
+            case 2:
+                pielegniarka();
+                System.out.println("Podaj login: ");
+                login = scanner.nextLine();
+                System.out.println("Podaj haslo: ");
+                haslo = scanner.nextLine();
+                break;
+            case 3:
+                pracownik();
+                System.out.println("Podaj login: ");
+                login = scanner.nextLine();
+                System.out.println("Podaj haslo: ");
+                haslo = scanner.nextLine();
+                break;
+
+        }
+
     }
 
     public static void lekarz()
