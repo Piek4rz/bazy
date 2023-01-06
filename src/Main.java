@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args)
     {
-        zaloguj();
+        DBConnector.connect();
+        //zaloguj();
     }
 
     public static void zaloguj()
