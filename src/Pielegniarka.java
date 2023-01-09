@@ -1,14 +1,12 @@
 public class Pielegniarka extends PracownikSzpitala{
-    int IDPracownika;
 
-    Pielegniarka(int IDPracownika, String haslo, int IDOddzialu, int IDOsoby, int IDDyzuru)
+    Pielegniarka(int IDPracownika)
     {
-        super( haslo, IDOddzialu,IDOsoby,IDDyzuru);
-        this.IDPracownika = super.IDPracownika;
+
     }
 
     void edytowanieDokumentacji()
     {
-
+        System.out.println("edytowano");
     }
 }

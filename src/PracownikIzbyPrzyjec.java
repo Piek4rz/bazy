@@ -1,36 +1,33 @@
 public class PracownikIzbyPrzyjec extends PracownikSzpitala{
 
-    int IDPracownika;
 
-    PracownikIzbyPrzyjec(int IDPracownika, String haslo, int IDOddzialu, int IDOsoby, int IDDyzuru)
+    PracownikIzbyPrzyjec(int IDPracownika)
     {
-        super(haslo, IDOddzialu,IDOsoby,IDDyzuru);
-        this.IDPracownika = super.IDPracownika;
     }
 
     void zarejestrowaniePacjenta()
     {
-
+        System.out.println("zarejestrowano");
     }
 
     void sprawdzanieWolnychlozek()
     {
-
+        System.out.println("wolne lozka");;
     }
 
     void edytowaniePacjenta()
     {
-
+        System.out.println("edytowano");
     }
 
     void wgladWKadre()
     {
-
+        System.out.println("podglad");
     }
 
     void przypisaniePacjentaDoOddzialu()
     {
-
+        System.out.println("przypisano");
     }
 
 

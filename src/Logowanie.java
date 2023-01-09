@@ -52,55 +52,75 @@ public class Logowanie {
 
     }
 
-    public static void pielegniarka()
+    public static void pielegniarka(int IDpracownika)
     {
         int wybor=0;
-
-        System.out.println("Zalogowano jako pielegniarka\n");
-        System.out.println("1 - Edytuj dokumentacje medyczna pacjenta\n");
+        boolean loop = true;
         Scanner scanner = new Scanner(System.in);
-        wybor= Integer.parseInt(scanner.nextLine());
+        Pielegniarka pielegniarka = new Pielegniarka(IDpracownika);
+        System.out.println("Zalogowano jako pielegniarka\n");
+        while(loop) {
 
-        switch (wybor){
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            default:
-                System.out.println("podaj poprawna liczbe");
-                break;
+            System.out.println("1 - Edytuj dokumentacje medyczna pacjenta\n" +
+                    "2 - wyloguj\n");
+            wybor = Integer.parseInt(scanner.nextLine());
+
+            switch (wybor) {
+                case 1:
+                    pielegniarka.edytowanieDokumentacji();
+                    break;
+                case 2:
+                    loop = false;
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("podaj poprawna liczbe");
+                    break;
+            }
         }
-
     }
 
-    public static void pracownik_izby_przyjec()
+    public static void pracownik_izby_przyjec(int IDPracownika)
     {
         int wybor=0;
-
-        System.out.println("Zalogowano jako pracownik izby przyjec\n");
-        System.out.println("1 - zarejestruj pacjenta\n" +
-                "2 - sprawdz wolne lozka\n" +
-                "3 - edytuj dane pacjenta\n" +
-                "4 - przypisz pacjenta do oddzialu" +
-                "5 - zobacz kadre szpitala");
+        boolean loop= true;
         Scanner scanner = new Scanner(System.in);
-        wybor= Integer.parseInt(scanner.nextLine());
-        switch (wybor){
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            default:
-                System.out.println("podaj poprawna liczbe");
-                break;
+        PracownikIzbyPrzyjec pracownikIzbyPrzyjec = new PracownikIzbyPrzyjec(IDPracownika);
+        System.out.println("Zalogowano jako pracownik izby przyjec\n");
+
+        while (loop) {
+            System.out.println("1 - zarejestruj pacjenta\n" +
+                    "2 - sprawdz wolne lozka\n" +
+                    "3 - edytuj dane pacjenta\n" +
+                    "4 - przypisz pacjenta do oddzialu\n" +
+                    "5 - zobacz kadre szpitala\n" +
+                    "6 - wyloguj\n\n");
+
+            wybor = Integer.parseInt(scanner.nextLine());
+            switch (wybor) {
+                case 1:
+                    pracownikIzbyPrzyjec.zarejestrowaniePacjenta();
+                    break;
+                case 2:
+                    pracownikIzbyPrzyjec.sprawdzanieWolnychlozek();
+                    break;
+                case 3:
+                    pracownikIzbyPrzyjec.edytowaniePacjenta();
+                    break;
+                case 4:
+                    pracownikIzbyPrzyjec.przypisaniePacjentaDoOddzialu();
+                    break;
+                case 5:
+                    pracownikIzbyPrzyjec.wgladWKadre();
+                    break;
+                case 6:
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("podaj poprawna liczbe");
+                    break;
+            }
         }
 
     }
@@ -110,7 +130,7 @@ public class Logowanie {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Wybierz opcję: \n 1. Lekarz\n 2. Pielegniarka\n 3. Pracownik izby przyjec");
         wybor= Integer.parseInt(scanner.nextLine());
-        while(wybor>3 && wybor<1)
+        while(wybor>3 || wybor<1)
         {
             System.out.println("Podano zla lilczbe, wpisz jeszcze raz");
             wybor = scanner.nextInt();
