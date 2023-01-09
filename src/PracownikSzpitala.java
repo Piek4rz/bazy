@@ -14,6 +14,10 @@ public class PracownikSzpitala{
         counter++;
     }
 
+    public PracownikSzpitala() {
+
+    }
+
     public static void setCounter(int counter) {
         PracownikSzpitala.counter = counter;
     }

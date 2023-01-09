@@ -1,32 +1,26 @@
 public class Lekarz extends PracownikSzpitala{
 
-    private static int counter = 1;
-    int IDPracownika, IDLekarza;
 
-    Lekarz(int IDPracownika, String haslo, int IDOddzialu, int IDOsoby, int IDDyzuru)
+
+    Lekarz(int IDPracownika)
     {
-        super(haslo, IDOddzialu,IDOsoby,IDDyzuru);
-        this.IDPracownika = super.IDPracownika;
-        IDLekarza = counter;
-        counter++;
+        super();
+
     }
 
     void wypisaniePacjenta()
     {
-
+        System.out.println("wypisano");
     }
 
     void wystawienieAktuZgonu()
     {
-
+        System.out.println("RIP");
     }
 
     void edytowanieDokumentacji()
     {
-
+        System.out.println("edytowano");
     }
 
-    public int getIDLekarza() {
-        return IDLekarza;
-    }
 }
