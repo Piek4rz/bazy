@@ -6,8 +6,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Logowanie {
-    static Connection dane;
-    static Statement daneStatement;
+
     static ResultSet haslaSet, loginSet;
     public static void lekarz(int IDPracownika)
     {
@@ -17,7 +16,8 @@ public class Logowanie {
             int wybor = 0;
             boolean loop = true;
 
-            System.out.println("Zalogowano jako lekarz\n");
+            System.out.println("Zalogowano jako lekarz");
+            lekarz.danePracownika(IDPracownika);
 
             while (loop) {
                 System.out.println("1 - wypisz pacjenta\n" +
@@ -58,7 +58,8 @@ public class Logowanie {
         boolean loop = true;
         Scanner scanner = new Scanner(System.in);
         Pielegniarka pielegniarka = new Pielegniarka(IDpracownika);
-        System.out.println("Zalogowano jako pielegniarka\n");
+        System.out.println("Zalogowano jako pielegniarka");
+        pielegniarka.danePracownika(IDpracownika);
         while(loop) {
 
             System.out.println("1 - Edytuj dokumentacje medyczna pacjenta\n" +
@@ -87,7 +88,9 @@ public class Logowanie {
         boolean loop= true;
         Scanner scanner = new Scanner(System.in);
         PracownikIzbyPrzyjec pracownikIzbyPrzyjec = new PracownikIzbyPrzyjec(IDPracownika);
-        System.out.println("Zalogowano jako pracownik izby przyjec\n");
+        System.out.println("Zalogowano jako pracownik izby przyjec ");
+        pracownikIzbyPrzyjec.danePracownika(IDPracownika);
+
 
         while (loop) {
             System.out.println("1 - zarejestruj pacjenta\n" +
@@ -146,15 +149,15 @@ public class Logowanie {
         Logowanie logowanie = new Logowanie();
 
         try {
-            dane = DBConnector.connect();
-            daneStatement = dane.createStatement();
-            haslaSet = daneStatement.executeQuery("select haslo from pracownik_szpitala where id_pracownika = "+ loginInput);
+            DBConnector.dane = DBConnector.connect();
+            DBConnector.daneStatement = DBConnector.dane.createStatement();
+            haslaSet = DBConnector.daneStatement.executeQuery("select haslo from pracownik_szpitala where id_pracownika = "+ loginInput);
 
             String haslozBazy = "";
             haslaSet.next();
             haslozBazy = haslaSet.getString(1);
 
-            loginSet = daneStatement.executeQuery("select id_pracownika from " + pracownik[wybor] + " where id_pracownika = " + loginInput);
+            loginSet = DBConnector.daneStatement.executeQuery("select id_pracownika from " + pracownik[wybor] + " where id_pracownika = " + loginInput);
             String loginzBazy = "";
             if(loginSet.next())
                 loginzBazy = loginSet.getString("id_pracownika");

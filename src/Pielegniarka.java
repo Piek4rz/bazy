@@ -2,6 +2,7 @@ public class Pielegniarka extends PracownikSzpitala{
 
     Pielegniarka(int IDPracownika)
     {
+        super(IDPracownika);
 
     }
 

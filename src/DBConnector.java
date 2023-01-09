@@ -8,6 +8,8 @@ public class DBConnector {
     static String url = "jdbc:mysql://localhost:3306/szpital";
     static String username = "root";
     static String password = "admin";
+    static Connection dane;
+    static Statement daneStatement;
 
 
     public static Connection connect()

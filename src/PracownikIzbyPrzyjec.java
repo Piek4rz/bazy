@@ -3,6 +3,7 @@ public class PracownikIzbyPrzyjec extends PracownikSzpitala{
 
     PracownikIzbyPrzyjec(int IDPracownika)
     {
+        super(IDPracownika);
     }
 
     void zarejestrowaniePacjenta()

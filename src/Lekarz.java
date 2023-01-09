@@ -4,6 +4,7 @@ public class Lekarz extends PracownikSzpitala{
 
     Lekarz(int IDPracownika)
     {
+        super(IDPracownika);
     }
 
     void wypisaniePacjenta()

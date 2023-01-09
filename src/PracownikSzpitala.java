@@ -1,64 +1,54 @@
+import java.sql.ResultSet;
+import java.util.Scanner;
+
 public class PracownikSzpitala{
 
-    private static int counter = 1;
-    int IDPracownika, IDOddzialu, IDOsoby, IDDyzuru;
-    String haslo;
+    static ResultSet pracownikSet;
 
-    PracownikSzpitala(String haslo, int IDOddzialu, int IDOsoby, int IDDyzuru)
+    public PracownikSzpitala(int IDPracownika) {
+
+    }
+
+    void danePracownika(int IDPracownika)
     {
-        this.haslo = haslo;
-        this.IDOddzialu = IDOddzialu;
-        this.IDOsoby = IDOsoby;
-        this.IDDyzuru = IDDyzuru;
-        IDPracownika = counter;
-        counter++;
+        try
+        {
+            int IDOsoby = 0;
+            String imie = "", nazwisko = "";
+
+            pracownikSet = DBConnector.daneStatement.executeQuery("SELECT id_osoby FROM pracownik_szpitala where id_pracownika = " + IDPracownika);
+
+            if(pracownikSet.next())
+                IDOsoby = pracownikSet.getInt("id_osoby");
+
+            pracownikSet = DBConnector.daneStatement.executeQuery("SELECT imie, nazwisko FROM osoba where id_osoby = " + IDOsoby);
+            if (pracownikSet.next())
+            {
+                imie = pracownikSet.getString("imie");
+                nazwisko = pracownikSet.getString("nazwisko");
+            }
+            System.out.println(imie + " " + nazwisko);
+
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
-    public PracownikSzpitala() {
+    void danePacjenta()
+    {
 
     }
 
-    public static void setCounter(int counter) {
-        PracownikSzpitala.counter = counter;
+    void iluPacjentow()
+    {
+
     }
 
-    public void setIDOddzialu(int IDOddzialu) {
-        this.IDOddzialu = IDOddzialu;
+    void iluPacjentowOddzial()
+    {
+
     }
 
-    public void setIDOsoby(int IDOsoby) {
-        this.IDOsoby = IDOsoby;
-    }
 
-    public void setIDDyzuru(int IDDyzuru) {
-        this.IDDyzuru = IDDyzuru;
-    }
-
-    public void setHaslo(String haslo) {
-        this.haslo = haslo;
-    }
-
-    public int getCounter() {
-        return counter;
-    }
-
-    public int getIDPracownika() {
-        return IDPracownika;
-    }
-
-    public int getIDOddzialu() {
-        return IDOddzialu;
-    }
-
-    public int getIDOsoby() {
-        return IDOsoby;
-    }
-
-    public int getIDDyzuru() {
-        return IDDyzuru;
-    }
-
-    public String getHaslo() {
-        return haslo;
-    }
 }
