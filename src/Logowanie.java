@@ -48,7 +48,7 @@ public class Logowanie {
         Logowanie logowanie = new Logowanie();
 
         try {
-            dane = DriverManager.getConnection(DBConnector.url,DBConnector.username,DBConnector.password);
+            dane = DBConnector.connect();
             daneStatement = dane.createStatement();
             haslaSet = daneStatement.executeQuery("select haslo from pracownik_szpitala where id_pracownika = "+ loginInput);
 

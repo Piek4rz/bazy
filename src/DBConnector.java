@@ -10,24 +10,14 @@ public class DBConnector {
     static String password = "admin";
 
 
-    public static void connect()
+    public static Connection connect()
     {
         try {
-
-            Connection connection = DriverManager.getConnection(url,username,password);
-
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery("select * from osoba");
-
-            while (resultSet.next())
-            {
-                System.out.println(resultSet.getString("imie"));
-            }
-
+           return DriverManager.getConnection(url,username,password);
         }catch (Exception e)
         {
             e.printStackTrace();
         }
+        return null;
     }
 }
