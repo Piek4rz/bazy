@@ -35,6 +35,7 @@ public class PracownikSzpitala{
         }
     }
 
+
     void danePacjenta()
     {
 
@@ -42,6 +43,17 @@ public class PracownikSzpitala{
 
     void iluPacjentow()
     {
+        int iloscPacjentow = 0;
+        try {
+            pracownikSet = DBConnector.daneStatement.executeQuery("SELECT COUNT(*) FROM pacjenci_lezacy");
+            if(pracownikSet.next())
+                iloscPacjentow = pracownikSet.getInt(1);
+
+            System.out.println("Obecnie w szpitalu jest " + iloscPacjentow + " pacjentow");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
     }
 

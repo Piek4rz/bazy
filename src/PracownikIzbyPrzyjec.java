@@ -1,5 +1,8 @@
+import java.sql.ResultSet;
+
 public class PracownikIzbyPrzyjec extends PracownikSzpitala{
 
+    static ResultSet pracownikizbyprzyjecSet;
 
     PracownikIzbyPrzyjec(int IDPracownika)
     {
@@ -23,7 +26,19 @@ public class PracownikIzbyPrzyjec extends PracownikSzpitala{
 
     void wgladWKadre()
     {
-        System.out.println("podglad");
+        String imie , nazwisko , oddzial;
+        try {
+            pracownikizbyprzyjecSet = DBConnector.daneStatement.executeQuery("SELECT * FROM pracownik_oddzial;");
+            while (pracownikizbyprzyjecSet.next()) {
+                imie = pracownikizbyprzyjecSet.getString("imie");
+                nazwisko = pracownikizbyprzyjecSet.getString("nazwisko");
+                oddzial = pracownikizbyprzyjecSet.getString("oddzial");
+                System.out.println(imie + " " + nazwisko + " " + oddzial);
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     void przypisaniePacjentaDoOddzialu()

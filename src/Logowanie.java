@@ -23,7 +23,8 @@ public class Logowanie {
                 System.out.println("1 - wypisz pacjenta\n" +
                     "2 - wystaw akt zgonu\n" +
                     "3 - edytuj dokumentacje medyczna pacjenta\n" +
-                    "4 - wyloguj\n\n");
+                    "4 - Sprawdz ilu jest pacjentow w szpitalu\n" +
+                    "5 - wyloguj\n\n");
 
                 wybor = Integer.parseInt(scanner.nextLine());
                 switch (wybor) {
@@ -37,6 +38,9 @@ public class Logowanie {
                         lekarz.edytowanieDokumentacji();
                         break;
                     case 4:
+                        lekarz.iluPacjentow();
+                        break;
+                    case 5:
                         loop = false;
                         break;
                     default:
@@ -63,7 +67,8 @@ public class Logowanie {
         while(loop) {
 
             System.out.println("1 - Edytuj dokumentacje medyczna pacjenta\n" +
-                    "2 - wyloguj\n");
+                    "2 - Sprawdz ilu jest pacjentow w szpitalu\n" +
+                    "3 - wyloguj\n");
             wybor = Integer.parseInt(scanner.nextLine());
 
             switch (wybor) {
@@ -71,9 +76,12 @@ public class Logowanie {
                     pielegniarka.edytowanieDokumentacji();
                     break;
                 case 2:
-                    loop = false;
+                    pielegniarka.iluPacjentow();
                     break;
                 case 3:
+                    loop = false;
+                    break;
+                case 4:
                     break;
                 default:
                     System.out.println("podaj poprawna liczbe");
@@ -98,7 +106,8 @@ public class Logowanie {
                     "3 - edytuj dane pacjenta\n" +
                     "4 - przypisz pacjenta do oddzialu\n" +
                     "5 - zobacz kadre szpitala\n" +
-                    "6 - wyloguj\n\n");
+                    "6 - sprawdz ilu jest pacjentow w szpitalu\n" +
+                    "7 - wyloguj\n\n");
 
             wybor = Integer.parseInt(scanner.nextLine());
             switch (wybor) {
@@ -118,6 +127,9 @@ public class Logowanie {
                     pracownikIzbyPrzyjec.wgladWKadre();
                     break;
                 case 6:
+                    pracownikIzbyPrzyjec.iluPacjentow();
+                    break;
+                case 7:
                     loop = false;
                     break;
                 default:
