@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="604.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupa.javafx.LoginController">
+   <children>
+      <GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="174.0" prefWidth="335.0" style="-fx-background-color: transparent;" vgap="10.0">
+         <columnConstraints>
+            <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="170.0" minWidth="10.0" prefWidth="170.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="170.0" minWidth="10.0" prefWidth="170.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints prefHeight="30.0" valignment="CENTER" />
+            <RowConstraints maxHeight="27.999993896484376" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="28.79998779296875" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="29.800012207031244" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+         </rowConstraints>
+         <children>
+            <Label style="-fx-text-fill: #e3feff;" text="Logowanie" textFill="#e3feff" GridPane.halignment="RIGHT">
+               <font>
+                  <Font name="Book Antiqua" size="22.0" />
+               </font></Label>
+            <Label style="-fx-text-fill: #e3feff;" text="Wybierz opcję:" textFill="#e4feff" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Book Antiqua" size="22.0" />
+               </font></Label>
+            <ComboBox fx:id="comboBoxRole" prefWidth="150.0" promptText="Wybierz opcję" visibleRowCount="3" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ComboBox>
+            <Label style="-fx-text-fill: #e3feff;" text="Login:" textFill="#e8faff" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Book Antiqua" size="22.0" />
+               </font></Label>
+            <TextField fx:id="textFieldLogin" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: #cccccc;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+            <Label style="-fx-text-fill: #e3feff;" text="Hasło:" textFill="#e8faff" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Book Antiqua" size="22.0" />
+               </font></Label>
+            <PasswordField fx:id="passwordFieldHaslo" style="-fx-background-color: #cccccc;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER" />
+         </children>
+      </GridPane>
+      <Button contentDisplay="CENTER" lineSpacing="1.0" onAction="#onHelloButtonClick" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #55A;" text="Zaloguj się" textAlignment="CENTER" textOverrun="CLIP">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+   </children>
+</VBox>
